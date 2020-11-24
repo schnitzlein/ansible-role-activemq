@@ -38,6 +38,33 @@ activemq_create_user: yes
     - hosts: webservers
       roles:
         - { role: Islandora-Devops.activemq }
+        
+## HowTo run this thingy?
+be in a fresh project directory and installed ansible.
+create a directory called roles.
+git clone <this-repo> to roles/activemq
+create this file below as playbook.yml
+  
+```
+---
+- name: Web01
+  hosts: all
+  become: yes
+  gather_facts: False
+  pre_tasks:
+    - name: Install python for Ansible
+      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+      changed_when: False
+    - setup: # aka gather_facts
+
+  roles:
+    #- base
+    #- docker
+    - activemq
+```
+create an inventory file with localhost or with remote hosts (need ssh keys or passwd)
+run this with: ansible-playbook playbook.yml
+with -i fetch custom inventory non default.
 
 ## License
 
