@@ -4,6 +4,7 @@ An Ansible role that installs [ActiveMQ](http://activemq.apache.org/) on:
 
 * Centos/RHEL 7.x
 * Ubuntu Xenial
+* Ubuntu Bionic
 
 ## Role Variables
 
@@ -11,7 +12,7 @@ Available variables are listed below, along with default values:
 
 What version to install:
 ```
-activemq_version: 5.14.5
+activemq_version: 5.16.0
 ```
 
 Where to install to:
